@@ -1,0 +1,21 @@
+{
+  "name": "favbet-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm exec playwright test ",
+    "ui-mode": "pnpm exec playwright test --ui",
+    "project-chrome": "pnpm exec playwright test --project=chromium",
+    "debug": "pnpm exec playwright test --debug --grep=@a",
+    "code-gen": "pnpm exec playwright codegen"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.3.0"
+  }
+}
