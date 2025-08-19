@@ -1,6 +1,4 @@
-import type {
-    Reporter, FullConfig, Suite, TestCase, TestResult, FullResult, TestStep, Location
-} from '@playwright/test/reporter';
+import type {Reporter, TestCase, TestResult, TestStep} from '@playwright/test/reporter';
 
 class SlowStepReporter implements Reporter {
     private steps: Array<{ count: number, name: string, location: string | undefined, duration: number }> = [];
