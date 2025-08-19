@@ -18,9 +18,8 @@ concurrency:
 
 jobs:
   test:
-    name: Run Playwright tests
-    timeout-minutes: 60
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
       - uses: actions/checkout@v4
@@ -28,12 +27,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: pnpm
 
-      - name: Install dependencies
-        run: |
-          npm i -g pnpm
-          pnpm install
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: true
 
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps
@@ -55,7 +53,6 @@ jobs:
           path: playwright-report/
 
   deploy:
-    name: Deploy report to GitHub Pages
     needs: test
     if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
