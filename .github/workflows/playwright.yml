@@ -32,24 +32,24 @@ jobs:
         with:
           run_install: true
 
-#      - name: Install Playwright browsers
-#        run: pnpm exec playwright install --with-deps
-#
-#      - name: Run Playwright tests
-#        run: pnpm exec playwright test
-#
-#      - name: Upload test report artifact
-#        if: ${{ !cancelled() }}
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: playwright-report
-#          path: playwright-report/
-#          retention-days: 30
-#
-#      - name: Upload Pages artifact
-#        uses: actions/upload-pages-artifact@v3
-#        with:
-#          path: playwright-report/
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: pnpm exec playwright test
+
+      - name: Upload test report artifact
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: playwright-report/
 
   deploy:
     needs: test
